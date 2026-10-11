@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TecnoOficina | Seguridad de la información</title>
+    <meta name="description"
+        content="Dashboard interactivo de seguridad, ISO 27001 y gestión de 12 riesgos de Comercial TecnoOficina.">
+   <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <aside>
+        <div class="brand"><span class="mark">T</span>TecnoOficina</div>
+        <div class="tag">SEGURIDAD DE LA INFORMACIÓN</div>
+        <nav aria-label="Secciones"><button class="active" data-page="overview">◈ &nbsp; Resumen</button><button
+                data-page="company">▣ &nbsp; Empresa y activos</button><button data-page="security">◇ &nbsp; Principios
+                de seguridad</button><button data-page="iso">◎ &nbsp; ISO 27001</button><button data-page="risks">▦
+                &nbsp; Gestión de riesgos</button><button data-page="plan">✓ &nbsp; Plan de acción</button></nav>
+        <div class="sidefoot">GUAYAQUIL · ECUADOR<br>Caso académico ficticio<br>Unidades 1 y 2 · SGSI</div>
+    </aside>
+    <main>
+        <div class="top"><span>Comercial TecnoOficina / Panel de seguridad</span><span class="pill">● Caso
+                académico</span></div>
+        <section id="overview" class="section active">
+            <h1>Una visión clara de la seguridad.</h1>
+            <p class="sub">Identifica lo que debemos proteger, comprende nuestra exposición y prioriza las acciones para
+                mantener el negocio en funcionamiento.</p>
+            <div class="grid four">
+                <div class="card">
+                    <div class="label">Activos prioritarios</div>
+                    <div class="metric">5</div><span class="hint">Información, sistemas y equipos</span>
+                </div>
+                <div class="card">
+                    <div class="label">Riesgos evaluados</div>
+                    <div class="metric">12</div><span class="hint">Probabilidad × impacto</span>
+                </div>
+                <div class="card">
+                    <div class="label">Riesgos críticos iniciales</div>
+                    <div class="metric" id="critical"></div><span class="badge Crítico">Atención inmediata</span>
+                </div>
+                <div class="card">
+                    <div class="label">Acciones completadas</div>
+                    <div class="metric" id="completed">0/12</div><span class="hint">Seguimiento local de la
+                        simulación</span>
+                </div>
+            </div>
+            <div class="grid two space">
+                <div class="card">
+                    <h2>Mapa de exposición</h2>
+                    <p class="hint">Distribución de los 12 riesgos antes de aplicar los controles.</p>
+                    <div id="bars" class="bars"></div><button class="btn primary space" data-go="risks">Explorar los
+                        riesgos →</button>
+                </div>
+                <div class="card">
+                    <h2>Lo primero que debemos atender</h2>
+                    <div id="urgent"></div><button class="btn space" data-go="plan">Ver plan de acción →</button>
+                </div>
+            </div>
+            <div class="notice space">Las valoraciones y controles son propuestas para una empresa ficticia. Los riesgos
+                R01–R05 provienen de la Semana 4; R06–R12 amplían el caso. No representan una auditoría, controles
+                implantados ni una certificación.</div>
+        </section>
+        <section id="company" class="section">
+            <h1>Empresa y activos.</h1>
+            <p class="sub">Una pequeña empresa comercial que depende de la información para vender, facturar y entregar
+                sus productos.</p>
+            <div class="grid two">
+                <div class="card">
+                    <h2>Comercial TecnoOficina</h2>
+                    <p>Empresa ficticia privada de Guayaquil con aproximadamente <b>15 empleados</b>, distribuidos entre
+                        gerencia, administración, ventas, bodega y soporte técnico.</p>
+                    <p>Vende computadoras, impresoras, accesorios y suministros de oficina. También ofrece mantenimiento
+                        y reparación de equipos informáticos.</p>
+                    <div class="notice">Problemas base: control de acceso débil y respaldos insuficientes.</div>
+                </div>
+                <div class="card">
+                    <h2>Procesos principales</h2>
+                    <div class="process">01 · Venta y atención al cliente</div>
+                    <div class="process">02 · Facturación y administración</div>
+                    <div class="process">03 · Inventario y despacho de pedidos</div>
+                    <div class="process">04 · Compras y relación con proveedores</div>
+                    <div class="process">05 · Mantenimiento y soporte técnico</div>
+                </div>
+            </div>
+            <div class="card space">
+                <h2>Inventario de activos prioritarios</h2>
+                <div class="scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Activo</th>
+                                <th>Información / uso</th>
+                                <th>Responsable propuesto</th>
+                                <th>Clasificación</th>
+                                <th>Criticidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Base de datos</td>
+                                <td>Clientes, identificaciones, contactos, proveedores e historial comercial</td>
+                                <td>Administración</td>
+                                <td>Confidencial</td>
+                                <td>Alta</td>
+                            </tr>
+                            <tr>
+                                <td>Sistema de ventas</td>
+                                <td>Ventas, comprobantes y existencias</td>
+                                <td>Ventas y soporte</td>
+                                <td>Interna / confidencial según registro</td>
+                                <td>Alta</td>
+                            </tr>
+                            <tr>
+                                <td>Documentos digitales</td>
+                                <td>Facturas, contratos, pagos y reportes</td>
+                                <td>Administración</td>
+                                <td>Confidencial / restringida según documento</td>
+                                <td>Alta</td>
+                            </tr>
+                            <tr>
+                                <td>Correo corporativo</td>
+                                <td>Cotizaciones, pedidos y comunicación comercial</td>
+                                <td>Cada usuario y soporte</td>
+                                <td>Según contenido</td>
+                                <td>Alta</td>
+                            </tr>
+                            <tr>
+                                <td>Computadoras</td>
+                                <td>Equipos de administración, ventas y bodega; red local e Internet</td>
+                                <td>Soporte técnico</td>
+                                <td>Según datos almacenados</td>
+                                <td>Alta</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="security" class="section">
+            <h1>Proteger la información.</h1>
+            <p class="sub">La seguridad combina personas, procesos y tecnología para preservar tres principios
+                fundamentales.</p>
+            <div class="grid three">
+                <div class="card"><span class="number">01 / C</span>
+                    <h2 class="space">Confidencialidad</h2>
+                    <p>Solo las personas autorizadas pueden acceder a la información.</p>
+                    <p class="hint">Ejemplo: ventas consulta productos; no accede a contratos financieros. Controles:
+                        roles, MFA y cifrado.</p>
+                </div>
+                <div class="card"><span class="number">02 / I</span>
+                    <h2 class="space">Integridad</h2>
+                    <p>La información permanece exacta y se modifica de forma autorizada.</p>
+                    <p class="hint">Ejemplo: aprobar los ajustes de inventario y registrar quién los realizó. Controles:
+                        bitácoras, validación y segregación.</p>
+                </div>
+                <div class="card"><span class="number">03 / D</span>
+                    <h2 class="space">Disponibilidad</h2>
+                    <p>Los datos y sistemas están accesibles cuando se necesitan.</p>
+                    <p class="hint">Ejemplo: recuperar ventas desde una copia verificada. Controles: respaldos, UPS y
+                        continuidad.</p>
+                </div>
+            </div>
+            <div class="card space">
+                <h2>Clasificación de la información</h2>
+                <p class="hint">Modelo de clasificación propuesto. Selecciona un nivel para conocer su tratamiento.</p>
+                <div class="tools" id="classes"></div>
+                <div id="classdetail" class="detail"></div>
+            </div>
+            <div class="grid two space">
+                <div class="card">
+                    <h2>Seguridad física</h2>
+                    <ul class="list">
+                        <li>Control de ingreso y registro de visitantes.</li>
+                        <li>Equipos protegidos contra robo y manipulación.</li>
+                        <li>UPS, extintores y protección frente al agua.</li>
+                        <li>Mantenimiento y copias fuera del local.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h2>Seguridad lógica</h2>
+                    <ul class="list">
+                        <li>Cuentas individuales, MFA y mínimo privilegio.</li>
+                        <li>Parches, antimalware y firewall.</li>
+                        <li>Cifrado, copias verificadas y registros de acceso.</li>
+                        <li>Baja oportuna de usuarios y revisión de permisos.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="iso" class="section">
+            <h1>ISO 27001 aplicada al negocio.</h1>
+            <p class="sub">Un Sistema de Gestión de Seguridad de la Información (SGSI) permite organizar la protección y
+                gestionar los riesgos según el contexto de la empresa.</p>
+            <div class="notice">Referencia: ISO/IEC 27001:2022. Los controles del Anexo A se seleccionan según los
+                riesgos y se justifican en la Declaración de Aplicabilidad. Esta propuesta no acredita cumplimiento ni
+                certificación.</div>
+            <div class="grid two space">
+                <div class="card">
+                    <h2>Política propuesta</h2>
+                    <p>Proteger los datos de clientes, ventas, inventario y documentos; asignar acceso por funciones;
+                        utilizar credenciales seguras; mantener actualizaciones y respaldos; reportar incidentes y
+                        mejorar los controles periódicamente.</p>
+                    <h3>Alcance del SGSI</h3>
+                    <p class="hint">Procesos de venta, facturación, inventario y administración, incluidos los cinco
+                        activos y el personal que los utiliza.</p>
+                    <h3>Responsabilidades</h3>
+                    <p class="hint">Gerencia aprueba recursos y acepta riesgos residuales; soporte aplica controles
+                        técnicos; cada área protege sus datos y reporta incidentes.</p>
+                </div>
+                <div class="card">
+                    <h2>Ciclo de mejora continua</h2>
+                    <details open>
+                        <summary>Planificar</summary>
+                        <p class="hint">Identificar activos y riesgos, definir criterios, objetivos, responsables y
+                            tratamiento.</p>
+                    </details>
+                    <details>
+                        <summary>Hacer</summary>
+                        <p class="hint">Implantar MFA, roles, respaldos, parches y capacitación; conservar evidencias.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Verificar</summary>
+                        <p class="hint">Revisar permisos, pruebas de recuperación, incidentes e indicadores; realizar
+                            auditoría interna y revisión de gerencia.</p>
+                    </details>
+                    <details>
+                        <summary>Actuar</summary>
+                        <p class="hint">Corregir causas de fallos, actualizar riesgos y ajustar los controles.</p>
+                    </details>
+                </div>
+            </div>
+            <div class="card space">
+                <h2>Controles seleccionados</h2>
+                <div class="scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Familia</th>
+                                <th>Buenas prácticas y referencia</th>
+                                <th>Aplicación / evidencia propuesta</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Organizacionales</td>
+                                <td>A.5.12 Clasificación; A.5.15 acceso; A.5.18 derechos; A.5.24 preparación de
+                                    incidentes</td>
+                                <td>Etiquetas, matriz de permisos, registro de bajas y procedimiento de respuesta.</td>
+                            </tr>
+                            <tr>
+                                <td>Personas</td>
+                                <td>A.6.3 Concienciación y formación; A.6.5 responsabilidades tras cambio o terminación
+                                </td>
+                                <td>Capacitación contra phishing, registro de asistencia y lista de baja.</td>
+                            </tr>
+                            <tr>
+                                <td>Físicos</td>
+                                <td>A.7.2 Entrada física; A.7.5 amenazas ambientales; A.7.11 suministros; A.7.13
+                                    mantenimiento</td>
+                                <td>Registro de visitas, inspección del local, UPS y mantenimiento.</td>
+                            </tr>
+                            <tr>
+                                <td>Tecnológicos</td>
+                                <td>A.8.5 autenticación; A.8.7 malware; A.8.8 vulnerabilidades; A.8.13 respaldos; A.8.15
+                                    registros; A.8.24 criptografía</td>
+                                <td>MFA habilitado, parches documentados, restauraciones probadas y discos cifrados.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card space">
+                <h2>Respuesta a un incidente de phishing</h2>
+                <p>Detectar y reportar → bloquear la cuenta y cerrar sesiones → preservar registros e investigar →
+                    recuperar el acceso de forma segura → capacitar y corregir controles.</p>
+                <p class="hint">Registrar fecha, responsable, alcance y evidencia; verificar si se expusieron o
+                    modificaron datos.</p>
+            </div>
+        </section>
+        <section id="risks" class="section">
+            <h1>Entender y evaluar los riesgos.</h1>
+            <p class="sub">Explora los escenarios, filtra su exposición y compara la evaluación inicial con la
+                estimación posterior al tratamiento.</p>
+            <div class="grid two">
+                <div class="card">
+                    <h2>Matriz de riesgos 5 × 5</h2><label class="switch"><input class="check" id="residual"
+                            type="checkbox"> Ver riesgo residual estimado</label>
+                    <p class="hint">Probabilidad ↑ · Impacto →. Selecciona una celda para filtrar la tabla.</p>
+                    <div id="matrix" class="matrix"></div><button id="clearcell" class="btn space">Quitar filtro de
+                        celda</button>
+                </div>
+                <div class="card">
+                    <h2>Criterios del análisis</h2>
+                    <p><b>Nivel = probabilidad × impacto</b>, con valores de 1 a 5.</p>
+                    <p class="hint"><b>Probabilidad:</b> 1 rara, 2 poco probable, 3 posible, 4 probable, 5 muy
+                        probable.<br><b>Impacto:</b> 1 menor, 2 limitado, 3 moderado, 4 grave, 5 severo para la
+                        operación y los datos.</p>
+                    <div class="tools"><span class="badge Bajo">Bajo 1–4</span><span class="badge Medio">Medio
+                            5–9</span><span class="badge Alto">Alto 10–16</span><span class="badge Crítico">Crítico
+                            17–25</span></div>
+                    <p class="hint">Criterios académicos propios, no una escala impuesta por ISO. Crítico: atención
+                        inmediata; alto: tratamiento prioritario; medio: planificar y revisar; bajo: monitorear y
+                        solicitar aceptación de gerencia.</p>
+                    <div class="notice">El residual es una proyección tras implementar y verificar controles. No es una
+                        medición real ni implica aceptación automática.</div>
+                </div>
+            </div>
+            <div class="card space">
+                <h2>Registro de riesgos <span class="label" id="count"></span></h2>
+                <div class="tools"><input id="search" placeholder="Buscar riesgo, activo o vulnerabilidad"
+                        aria-label="Buscar riesgos"><select id="level" aria-label="Nivel">
+                        <option value="">Todos los niveles</option>
+                        <option>Bajo</option>
+                        <option>Medio</option>
+                        <option>Alto</option>
+                        <option>Crítico</option>
+                    </select><select id="asset" aria-label="Activo">
+                        <option value="">Todos los activos</option>
+                    </select><select id="sort" aria-label="Orden">
+                        <option value="desc">Mayor puntuación</option>
+                        <option value="asc">Menor puntuación</option>
+                    </select><button id="reset" class="btn">Restablecer</button></div>
+                <div class="scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Riesgo / detalle</th>
+                                <th>Activo</th>
+                                <th>Principios</th>
+                                <th>P</th>
+                                <th>I</th>
+                                <th>P × I</th>
+                                <th>Nivel</th>
+                            </tr>
+                        </thead>
+                        <tbody id="riskrows"></tbody>
+                    </table>
+                </div>
+                <p class="hint">C = confidencialidad · I = integridad · D = disponibilidad. Pulsa el nombre para ver
+                    amenaza, vulnerabilidad, impacto y tratamiento.</p>
+            </div>
+        </section>
+        <section id="plan" class="section">
+            <h1>De la evaluación a la acción.</h1>
+            <p class="sub">Cada riesgo tiene un control, una acción de mitigación, un responsable y un plazo propuesto.
+                Prioridad derivada del riesgo inicial.</p>
+            <div class="notice">Los cambios de estado se guardan únicamente en este navegador. Marcar una acción no
+                cambia la evaluación de riesgos ni demuestra que el control sea eficaz.</div>
+            <div class="tools"><select id="planfilter" aria-label="Filtrar prioridad">
+                    <option value="">Todas las prioridades</option>
+                    <option>Inmediata</option>
+                    <option>Alta</option>
+                    <option>Media</option>
+                    <option>Baja</option>
+                </select><button id="export" class="btn">Exportar plan CSV</button><button id="resetplan"
+                    class="btn">Reiniciar seguimiento</button></div>
+            <div class="card">
+                <div class="scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Riesgo</th>
+                                <th>Control y mitigación</th>
+                                <th>Responsable</th>
+                                <th>Prioridad / plazo</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="planrows"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="grid two space">
+                <div class="card">
+                    <h2>Cómo verificar los controles</h2>
+                    <ul class="list">
+                        <li>Restaurar una copia y comprobar registros recuperados.</li>
+                        <li>Validar MFA y revisar permisos por cargo.</li>
+                        <li>Comprobar parches y alertas de protección.</li>
+                        <li>Revisar bajas, bitácoras y formación del personal.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h2>Continuidad del negocio</h2>
+                    <p class="hint">Tiempos máximos propuestos en Semana 4: ventas 4 h; facturación e inventario 8 h;
+                        pedidos 12 h; documentos 24 h.</p>
+                    <p class="hint">Activar registros manuales, informar a soporte y gerencia, recuperar el servicio e
+                        ingresar y verificar las operaciones pendientes. Probar el plan cada 3 meses.</p>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">Base del caso: S4 – Trabajo Práctico Experimental 2, documento del equipo. Evaluación
+            ampliada con fines académicos.<br>Referencia normativa: <a href="https://www.iso.org/standard/27001"
+                target="_blank" rel="noopener">ISO/IEC 27001:2022 · ISO</a>. Valores iniciales y residuales sujetos a
+            validación en una evaluación real.</footer>
+    </main>
+    <dialog id="modal"><button class="btn close" id="close">Cerrar ×</button>
+        <h2 id="mtitle"></h2>
+        <div id="mbody"></div>
+    </dialog>
+   <script src="scripts.js"></script>
+</body>
+
+</html>
